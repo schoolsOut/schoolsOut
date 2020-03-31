@@ -1,0 +1,18 @@
+<div class="columns">
+  <div class="column is-one-fifth">
+    <ul>
+      {{#each this.calendars as |cal|}}
+        <li>
+          <button {{on 'click' (fn this.toggleSelection cal.key)}} style="background-color: {{cal.color}}" class="calendar-selector button {{if cal.selected "is-selected"}}">
+            {{cal.name}}
+          </button>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="column">
+    <iframe src={{this.iframeSource}} style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no">
+    </iframe>
+  </div>
+</div>
