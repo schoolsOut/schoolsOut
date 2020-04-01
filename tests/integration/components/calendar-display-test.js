@@ -12,15 +12,6 @@ module('Integration | Component | calendar-display', function(hooks) {
 
     await render(hbs`<CalendarDisplay />`);
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <CalendarDisplay>
-        template block text
-      </CalendarDisplay>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom('ul').exists();
   });
 });
