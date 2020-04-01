@@ -17,9 +17,19 @@ export default class IndexRoute extends Route {
             name: type.fields.Name,
             'icon-url': type.fields.Icon[0].url
           },
-          relationships: {}
+          relationships: {
+            resources: {
+              data: type.fields.Resources.map(function(id) {
+                return {
+                  type: "resources",
+                  id
+                }
+              })
+            }
+          }
         });
       });
+
 
       response = await fetch('/data/subjects.json');
       const subjects = await response.json();
@@ -33,7 +43,16 @@ export default class IndexRoute extends Route {
             description: subject.fields.Description,
             color: subject.fields.RGB
           },
-          relationships: {}
+          relationships: {
+            resources: {
+              data: subject.fields.Resources.map(function(id) {
+                return {
+                  type: "resources",
+                  id
+                }
+              })
+            }
+          }
         });
       });
 
@@ -41,6 +60,26 @@ export default class IndexRoute extends Route {
       const resources = await response.json();
 
       resources.records.forEach(function(resource) {
+        const relationships = {};
+
+        if (resource.fields.Type) {
+          relationships.type = {
+            data: {
+              type: "types",
+              id: resource.fields.Type[0]
+            }
+          }
+        }
+
+        if (resource.fields.Subject) {
+          relationships.type = {
+            data: {
+              type: "subjects",
+              id: resource.fields.Subject[0]
+            }
+          }
+        }
+
         data.data.pushObject({
           id: resource.id,
           type: 'resources',
@@ -56,7 +95,7 @@ export default class IndexRoute extends Route {
             'high-school': resource.fields['High School'] | false,
             'higher-ed': resource.fields['Higher Ed /Adult'] | false
           },
-          relationships: {}
+          relationships
         });
       });
 
