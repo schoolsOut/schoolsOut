@@ -40,6 +40,12 @@ export default class DataService extends Service {
     return response.json();
   }
 
+  resourcesWithSubjectId(subjectId) {
+    return this.resources.filter(function(resource) {
+      return resource.subject.id === subjectId;
+    })
+  }
+
   // TODO: Move to serializer normalizeReponse
   serializeType(payload) {
     return {

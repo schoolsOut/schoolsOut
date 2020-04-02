@@ -25,15 +25,34 @@ $primary-invert: $pink-invert;
 
 @import "node_modules/bulma/bulma";
 
-
 .calendar-selector {
   width: 100%;
-  color: white;
+  color: black;
   margin: 0.1em 0.25em 0;
-  border: 0.2em solid white;
   font-size: 0.9em;
-  
+  background: none;
+  position: relative;
+
   &.is-selected {
-    border-color: purple;
+    color: white;
+    font-weight: bold;
+
+    & .calendar-selector-background {
+      opacity: 1.0;
+    }
   }
+
+  & .calendar-selector-background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+  }
+}
+
+.subject-selector {
+  cursor: pointer;
 }

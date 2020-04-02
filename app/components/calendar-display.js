@@ -91,7 +91,9 @@ export default class CalendarDisplayComponent extends Component {
     }
   ])
 
-  @tracked selectedCalendars = [];
+  @tracked selectedCalendars = [
+    'MW45dWswOWw2Y2Z1ZmlyM3VtMThicm5vOW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ'
+  ];
 
   get calendars() {
     return this.calendarSources.map((cal) => {

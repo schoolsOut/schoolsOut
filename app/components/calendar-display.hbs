@@ -3,7 +3,8 @@
     <ul>
       {{#each this.calendars as |cal|}}
         <li>
-          <button {{on 'click' (fn this.toggleSelection cal.key)}} style="background-color: {{cal.color}}" class="calendar-selector button {{if cal.selected "is-selected"}}">
+          <button {{on 'click' (fn this.toggleSelection cal.key)}} class="calendar-selector button {{if cal.selected "is-selected"}}">
+            <span class="calendar-selector-background" style="background-color: {{cal.color}}" />
             {{cal.name}}
           </button>
         </li>
