@@ -1,2 +1,39 @@
 <Hero @title="Streaming Resources" />
+
+<div class="container">
+  <table class="table is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Topic</th>
+        <th>Summary</th>
+        <th>Amazon Prime</th>
+        <th>AppleTV+</th>
+        <th>Disney+</th>
+        <th>Google Play</th>
+        <th>Netflix</th>
+        <th>YouTube</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each this.videos as |video|}}
+        <tr>
+          <td>{{video.title}}</td>
+          <td>{{video.rating}}</td>
+          <td>{{video.topic}}</td>
+          <td>{{video.summary}}</td>
+          <td>{{#if video.prime}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if video.apple}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if video.disney}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if video.googlePlay}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if video.netflix}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if video.youtube}}{{fa-icon 'check-square'}}{{/if}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
 {{outlet}}

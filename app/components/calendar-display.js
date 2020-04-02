@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export default class CalendarDisplayComponent extends Component {
   calendarSources = Object.freeze([
@@ -100,7 +101,7 @@ export default class CalendarDisplayComponent extends Component {
       return {
         name: cal.name,
         key: cal.key,
-        color: cal.color,
+        color: htmlSafe(cal.color),
         selected: this.selectedCalendars.includes(cal.key)
       }
     })
@@ -131,7 +132,7 @@ export default class CalendarDisplayComponent extends Component {
     this.calendars.forEach(function(cal) {
       if (cal.selected) {
         sources.pushObject(['src', cal.key]);
-        colors.pushObject(['color', `%23${cal.color.substring(1,7)}`]);
+        colors.pushObject(['color', `%23${cal.color.string.substring(1,7)}`]);
       }
     });
 
