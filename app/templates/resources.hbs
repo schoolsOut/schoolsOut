@@ -1,0 +1,50 @@
+<Hero
+  @title="Resources"
+  @subtitle="Unfortunately, that is wrong; on the contrary, a reason is the toe of an emery. A great-grandmother is a competition's building."
+>
+  <div class="tags are-small">
+    {{#each this.data.subjects as |subject|}}
+      <span class="tag is-info">{{subject.name}}</span>
+    {{/each}}
+  </div>
+</Hero>
+
+<div class="container">
+  <table class="table is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Has App?</th>
+        <th>Early Childhood</th>
+        <th>Elementary</th>
+        <th>Middle School</th>
+        <th>High School</th>
+        <th>Higher Ed</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each this.data.resources as |resource|}}
+        <tr>
+          <td>
+            {{resource.name}}
+            <a class="button is-small is-light" href={{resource.url}}>
+              {{fa-icon 'link' class="icon is-small"}}
+              <span>URL</span>
+            </a>
+          </td>
+          <td>{{resource.description}}</td>
+          <td>{{#if resource.hasApp}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if resource.earlyChildhood}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if resource.elementary}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if resource.middleSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if resource.highSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td>{{#if resource.higherEd}}{{fa-icon 'check-square'}}{{/if}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{outlet}}
