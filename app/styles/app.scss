@@ -62,3 +62,17 @@ $primary-invert: $pink-invert;
 .subject-selector {
   cursor: pointer;
 }
+
+#typeform-full {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 3.2em;
+  border: 0;
+  height: calc(100vh - 3.2em);
+}
+
+td.field-summary {
+  min-width: 14em;
+}

@@ -1,6 +1,9 @@
 <Hero
   @title="Resources"
-  @subtitle="Unfortunately, that is wrong; on the contrary, a reason is the toe of an emery. A great-grandmother is a competition's building."
+  {{!-- @subtitle="Unfortunately, that is wrong; on the contrary, a reason is the toe of an emery. A great-grandmother is a competition's building." --}}
+  @search={{this.setSearch}}
+  @searchTerm={{this.search}}
+  @searchPlaceholder = "Find a resource"
 >
   <div class="tags are-small">
     {{#each this.data.subjects as |subject|}}

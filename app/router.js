@@ -10,4 +10,5 @@ Router.map(function() {
   this.route('live-classes');
   this.route('streaming');
   this.route('resources');
+  this.route('submissions');
 });

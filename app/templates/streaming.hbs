@@ -1,6 +1,11 @@
-<Hero @title="Streaming Resources" />
+<Hero
+  @title="Streaming Resources"
+  @search={{true}}
+  @searchTerm={{this.search}}
+  @searchPlaceholder="Find a video"
+/>
 
-<div class="container">
+<div class="table-container">
   <table class="table is-striped is-hoverable">
     <thead>
       <tr>
@@ -20,16 +25,16 @@
     <tbody>
       {{#each this.videos as |video|}}
         <tr>
-          <td>{{video.title}}</td>
-          <td>{{video.rating}}</td>
-          <td>{{video.topic}}</td>
-          <td>{{video.summary}}</td>
-          <td>{{#if video.prime}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if video.apple}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if video.disney}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if video.googlePlay}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if video.netflix}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if video.youtube}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-title">{{video.title}}</td>
+          <td class="field-rating">{{video.rating}}</td>
+          <td class="field-topic">{{video.topic}}</td>
+          <td class="field-summary">{{video.summary}}</td>
+          <td class="field-prime">{{#if video.prime}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-apple">{{#if video.apple}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-disney">{{#if video.disney}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-googlePlay">{{#if video.googlePlay}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-netflix">{{#if video.netflix}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-youtube">{{#if video.youtube}}{{fa-icon 'check-square'}}{{/if}}</td>
         </tr>
       {{/each}}
     </tbody>

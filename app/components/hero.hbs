@@ -1,7 +1,25 @@
 <section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">{{@title}}</h1>
+      <h1 class="title level">
+        <span class="level-left">{{@title}}</span>
+        {{#if @search}}
+          <div class="level-right">
+            <div class="field has-addons level-item">
+              <div class="control">
+                <Input class="input" @value={{@searchTerm}} placeholder={{@searchPlaceholder}} />
+              </div>
+              <div class="control">
+                <button class="button is-info is-active" {{on 'click' this._search}}>
+                  <div class="icon">
+                    <FaIcon @icon="search" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      </h1>
       {{#if @subtitle}}
         <h2 class="subtitle">{{@subtitle}}</h2>
       {{/if}}
