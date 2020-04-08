@@ -25,6 +25,40 @@ $primary-invert: $pink-invert;
 
 @import "node_modules/bulma/bulma";
 
+section.section.about {
+  position: relative;
+
+  & .about-background {
+    background-image: url(/images/schoolsOut_noText.jpg);
+    background-repeat: no-repeat;
+    min-height: 29em;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    opacity: 0.6;
+  }
+
+  & .logo-holder {
+    text-align: center;
+  }
+
+  & .logo {
+    background-image: url(/images/schoolsOut_noText.jpg);
+    background-repeat: no-repeat;
+    min-height: 12em;
+    min-width: 10em;
+    max-width: 11em;
+    background-position: top center;
+    background-size: contain;
+    flex: 1 1 0em;
+    margin: 0 2em 2em;
+    display: inline-block;
+  }
+}
+
 .calendar-selector {
   width: 100%;
   color: black;
