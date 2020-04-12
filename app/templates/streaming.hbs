@@ -3,7 +3,13 @@
   @search={{true}}
   @searchTerm={{this.search}}
   @searchPlaceholder="Find a video"
-/>
+>
+  <div class="table-nav">
+    <div class="controls">
+      <TableNav @page={{this.page}} @totalPages={{this.totalPages}} @prevPage={{this.prevPage}} @nextPage={{this.nextPage}} />
+    </div>
+  </div>
+</Hero>
 
 <div class="table-container">
   <table class="table is-striped is-hoverable">
@@ -23,7 +29,7 @@
     </thead>
 
     <tbody>
-      {{#each this.videos as |video|}}
+      {{#each this.videosToShow as |video|}}
         <tr>
           <td class="field-title">{{video.title}}</td>
           <td class="field-rating">{{video.rating}}</td>

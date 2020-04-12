@@ -31,9 +31,9 @@ export default class DataService extends Service {
 
   @task
   *loadAndPushTask(name) {
-    let payload = yield this.fetchTask.perform(`/data/${name}.json`);
+    let payload = yield this.fetchTask.perform(`https://schoolsout-test.s3-us-west-2.amazonaws.com/data/${name}.json`);
     let data = [];
-    payload.records.forEach(record => {
+    payload.forEach(record => {
       record.type = name;
       data.push(record);
     });

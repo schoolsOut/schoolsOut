@@ -10,17 +10,19 @@ export default class SubjectSerializer extends ApplicationSerializer {
         description: payload.fields.Description,
         color: payload.fields.RGB
       },
-      relationships: {
-        resources: {
-          data: payload.fields.Resources.map(function(id) {
-            return {
-              type: "resources",
-              id
-            }
-          })
-        }
-      }
+      relationships: {}
     };
+
+    if (payload.fields.Resources) {
+      normalized.relationships.resources = {
+        data: payload.fields.Resources.map(function(id) {
+          return {
+            type: "resources",
+            id
+          };
+        })
+      };
+    }
 
     return super.normalize(modelClass, normalized);
   }

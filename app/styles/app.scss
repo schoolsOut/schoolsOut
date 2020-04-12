@@ -97,6 +97,20 @@ section.section.about {
   cursor: pointer;
 }
 
+.table-container {
+  padding: 0.5em;
+}
+
+.table-nav {
+  display: flex;
+  flex-direction: row-reverse;
+
+  & span {
+    padding: 0.5em;
+    display: inline-block;
+  }
+}
+
 #typeform-full {
   position: absolute;
   left: 0;

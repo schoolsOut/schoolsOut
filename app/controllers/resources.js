@@ -8,9 +8,12 @@ const GENERAL_SUBJECT_ID = 'recLpIXhGuw2rp7gS';
 export default class ResourcesController extends Controller {
   @service data;
 
-  queryParams = ['subject', 'search'];
+  queryParams = ['subject', 'search', 'page'];
   @tracked subject = GENERAL_SUBJECT_ID;
   @tracked search = "";
+  @tracked page = 1;
+
+  perPage=10;
 
   get filteredResources() {
     const searchRegExp = new RegExp(this.search, "i");
@@ -22,13 +25,39 @@ export default class ResourcesController extends Controller {
     }).sortBy('name');
   }
 
+  get resourcesToShow() {
+    const start = (this.page - 1) * this.perPage + 1;
+    const end = start + this.perPage;
+
+    return this.filteredResources.slice(start, end)
+  }
+
+  get totalPages() {
+    return Math.ceil( this.filteredResources.length / this.perPage );
+  }
+
   @action
   setSubject(subject) {
+    this.page = 1;
     this.subject = subject ? subject.id : GENERAL_SUBJECT_ID;
   }
 
   @action
   setSearch(term) {
     this.search = term;
+  }
+
+  @action
+  prevPage() {
+    if (this.page > 1) {
+      this.page -= 1;
+    }
+  }
+
+  @action
+  nextPage() {
+    if (this.page < this.totalPages) {
+      this.page += 1;
+    }
   }
 }

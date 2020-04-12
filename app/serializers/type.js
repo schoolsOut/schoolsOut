@@ -9,17 +9,19 @@ export default class TypeSerializer extends ApplicationSerializer {
         name: payload.fields.Name,
         "icon-url": payload.fields.Icon[0].url
       },
-      relationships: {
-        resources: {
-          data: payload.fields.Resources.map(function(id) {
-            return {
-              type: "resources",
-              id
-            };
-          })
-        }
-      }
+      relationships: {}
     };
+
+    if (payload.fields.Resources) {
+      normalized.relationships.resources = {
+        data: payload.fields.Resources.map(function(id) {
+          return {
+            type: "resources",
+            id
+          };
+        })
+      };
+    }
 
     return super.normalize(modelClass, normalized);
   }

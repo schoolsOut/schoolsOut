@@ -10,9 +10,14 @@
       <span class="subject-selector tag {{if (eq subject.id this.subject) "is-success" "is-info"}}" role="button" {{on "click" (fn this.setSubject subject)}}>{{subject.name}}</span>
     {{/each}}
   </div>
+  <div class="table-nav">
+    <div class="controls">
+      <TableNav @page={{this.page}} @totalPages={{this.totalPages}} @prevPage={{this.prevPage}} @nextPage={{this.nextPage}} />
+    </div>
+  </div>
 </Hero>
 
-<div class="container">
+<div class="table-container">
   <table class="table is-striped is-hoverable">
     <thead>
       <tr>
@@ -28,7 +33,7 @@
     </thead>
 
     <tbody>
-      {{#each this.filteredResources as |resource|}}
+      {{#each this.resourcesToShow as |resource|}}
         <tr>
           <td>
             <a class="" href={{resource.url}} target="_resource">

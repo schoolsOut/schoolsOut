@@ -1,0 +1,12 @@
+<span>Pages:</span>
+<button class="button" {{on "click" @prevPage}} disabled={{eq @page 1}}>
+  <div class="icon">
+    <FaIcon @icon="less-than" />
+  </div>
+</button>
+<span>{{@page}} / {{@totalPages}}</span>
+<button class="button" {{on "click" @nextPage}} disabled={{eq @page @totalPages}}>
+  <div class="icon">
+    <FaIcon @icon="greater-than" />
+  </div>
+</button>
