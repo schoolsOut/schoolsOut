@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-export default class StreamingController extends Controller {
+export default class PodcastsController extends Controller {
   @service data;
 
   queryParams = ['search', 'page'];
@@ -12,24 +12,24 @@ export default class StreamingController extends Controller {
 
   perPage=10;
 
-  get filteredVideos() {
+  get filteredPodcasts() {
     const searchRegExp = new RegExp(this.search, "i");
-    return this.data.videos.filter((video) => {
-      const matchesSearch = searchRegExp.exec(video.title);
+    return this.data.podcasts.filter(podcast => {
+      const matchesSearch = searchRegExp.exec(podcast.name);
 
       return matchesSearch;
-    }).sortBy('title');
+    }).sortBy('name');
   }
 
-  get videosToShow() {
+  get podcastsToShow() {
     const start = (this.page - 1) * this.perPage;
     const end = start + this.perPage;
 
-    return this.filteredVideos.slice(start, end)
+    return this.filteredPodcasts.slice(start, end)
   }
 
   get totalPages() {
-    return Math.ceil( this.filteredVideos.length / this.perPage );
+    return Math.ceil( this.filteredPodcasts.length / this.perPage );
   }
 
   @action

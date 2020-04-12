@@ -26,7 +26,7 @@ export default class ResourcesController extends Controller {
   }
 
   get resourcesToShow() {
-    const start = (this.page - 1) * this.perPage + 1;
+    const start = (this.page - 1) * this.perPage;
     const end = start + this.perPage;
 
     return this.filteredResources.slice(start, end)
@@ -45,6 +45,7 @@ export default class ResourcesController extends Controller {
   @action
   setSearch(term) {
     this.search = term;
+    this.page = 1;
   }
 
   @action

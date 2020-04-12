@@ -30,6 +30,11 @@ export default class DataService extends Service {
   }
 
   @task
+  *loadPodcastsTask() {
+    yield this.loadAndPushTask.perform('podcasts');
+  }
+
+  @task
   *loadAndPushTask(name) {
     let payload = yield this.fetchTask.perform(`https://schoolsout-test.s3-us-west-2.amazonaws.com/data/${name}.json`);
     let data = [];

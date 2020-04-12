@@ -1,12 +1,15 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import { set } from '@ember/object';
 
 export default class HeroComponent extends Component {
-  @tracked searchTerm;
+  get searchTerm() {
+    if (this._searchTerm == undefined) {
+      this._searchTerm = this.args.searchTerm;
+    }
+    return this._searchTerm;
+  }
 
-  @action
-  _search() {
-    this.args.search(this.searchTerm)
+  set searchTerm(val) {
+    set(this, '_searchTerm', val);
   }
 }

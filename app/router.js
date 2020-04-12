@@ -11,4 +11,6 @@ Router.map(function() {
   this.route('streaming');
   this.route('resources');
   this.route('submissions');
+  this.route('podcasts');
+  this.route('update');
 });

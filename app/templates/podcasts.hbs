@@ -1,0 +1,38 @@
+<Hero
+  @title="Podcasts"
+  @search={{this.setSearch}}
+  @searchTerm={{this.search}}
+  @searchPlaceholder = "Find a podcast"
+>
+  <div class="table-nav">
+    <div class="controls">
+      <TableNav @page={{this.page}} @totalPages={{this.totalPages}} @prevPage={{this.prevPage}} @nextPage={{this.nextPage}} />
+    </div>
+  </div>
+</Hero>
+
+<div class="table-container">
+  <table class="table is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each this.podcastsToShow as |podcast|}}
+        <tr>
+          <td>
+            <a class="" href={{podcast.link}} target="_podcast">
+              {{podcast.name}}
+            </a>
+          </td>
+          <td>{{podcast.description}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{outlet}}
