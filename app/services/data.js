@@ -35,8 +35,17 @@ export default class DataService extends Service {
   }
 
   @task
+  *loadSettingsTask() {
+    this.settings = {}
+    const payload = yield this.fetchTask.perform(`https://schoolsout-indefinitely.s3-us-west-2.amazonaws.com/data/settings.json`);
+    payload.forEach(record => {
+      this.settings[record.fields['Data Tag']] = record.fields.Content;
+    });
+  }
+
+  @task
   *loadAndPushTask(name) {
-    let payload = yield this.fetchTask.perform(`https://schoolsout-test.s3-us-west-2.amazonaws.com/data/${name}.json`);
+    let payload = yield this.fetchTask.perform(`https://schoolsout-indefinitely.s3-us-west-2.amazonaws.com/data/${name}.json`);
     let data = [];
     payload.forEach(record => {
       record.type = name;

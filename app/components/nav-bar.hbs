@@ -19,15 +19,22 @@
         <LinkTo @route='submissions' class="navbar-item">Submissions</LinkTo>
       </div>
 
-      {{!-- <div class="navbar-end">
+      <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
+          <div class="buttons social-links">
+            <a class="button facebook-link" href={{this.data.settings.facebookLink}} target="_facebook">
+              <div class="icon">
+                <FaIcon @icon="facebook-f" @prefix="fab" />
+              </div>
+            </a>
+            <a class="button instagram-link" href={{this.data.settings.instagramLink}} target="_facebook">
+              <div class="icon">
+                <FaIcon @icon="instagram" @prefix="fab" />
+              </div>
             </a>
           </div>
         </div>
-      </div> --}}
+      </div>
     </div>
   </div>
 </nav>

@@ -17,16 +17,12 @@ module.exports = function(deployTarget) {
       "type": "version-commit"
     },
     s3: {
-      bucket: 'schoolsout-test',
+      bucket: 'schoolsout-indefinitely',
       region: 'us-west-2',
-      accessKeyId: 'AKIAS7QZ4HL676V7PYHY',
-      secretAccessKey: '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'
     },
     's3-index': {
-      bucket: 'schoolsout-test',
+      bucket: 'schoolsout-indefinitely',
       region: 'us-west-2',
-      accessKeyId: 'AKIAS7QZ4HL676V7PYHY',
-      secretAccessKey: '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'
     },
     'fastboot-s3': {}
   };

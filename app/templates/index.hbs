@@ -1,21 +1,13 @@
 <section class="section about is-flex-tablet">
-  {{!-- <div class="about-background" /> --}}
   <div class="logo-holder">
     <div class="logo" />
   </div>
 
-  <div class="container">
-    <h1 class="title">About Us</h1>
-    <p>
-      We know many of us are starting to grapple with what is
-      becoming the new norm in our society - school closures
-      &amp; online learning due to the COVID-19 pandemic.
-    </p>
-    <p>
-      This is a place to share resources for those of us at
-      home with our kids, assist in troubleshooting of online
-      learning, connect with others experiencing this unique
-      situation, find support, and to vent.
-    </p>
-  </div>
+  <MarkdownToHtml
+    @markdown={{this.data.settings.welcomeMessage}}
+    class="container welcome-message"
+    @strikethrough={{true}}
+    @literalMidWordUnderscores={{true}}
+    @simplifiedAutoLink={{true}}
+  />
 </section>
