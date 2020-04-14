@@ -8,10 +8,27 @@ const GENERAL_SUBJECT_ID = 'recLpIXhGuw2rp7gS';
 export default class ResourcesController extends Controller {
   @service data;
 
-  queryParams = ['subject', 'search', 'page'];
+  queryParams = [
+    'subject',
+    'search',
+    { hasApp: 'app' },
+    { earlyChildhood: 'early' },
+    { elementary: 'elementary' },
+    { middleSchool: 'middle' },
+    { highSchool: 'high' },
+    { higherEd: 'higher' },
+    'page'
+  ];
   @tracked subject = GENERAL_SUBJECT_ID;
   @tracked search = "";
   @tracked page = 1;
+
+  @tracked hasApp = false;
+  @tracked earlyChildhood = false;
+  @tracked elementary = false;
+  @tracked middleSchool = false;
+  @tracked highSchool = false;
+  @tracked higherEd = false;
 
   perPage=10;
 
@@ -21,7 +38,15 @@ export default class ResourcesController extends Controller {
       const isSubject = resource.belongsTo('subject').id() == this.subject;
       const matchesSearch = searchRegExp.exec(resource.name);
 
-      return isSubject && matchesSearch;
+      let keep = isSubject && matchesSearch;
+
+      ['hasApp', 'earlyChildhood', 'elementary', 'middleSchool', 'highSchool', 'higherEd'].forEach( key => {
+        if (this[key]) {
+          keep = keep && resource[key];
+        }
+      })
+
+      return keep;
     }).sortBy('name');
   }
 

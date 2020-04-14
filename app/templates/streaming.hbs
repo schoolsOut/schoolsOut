@@ -19,12 +19,12 @@
         <th>Rating</th>
         <th>Topic</th>
         <th>Summary</th>
-        <th>Amazon Prime</th>
-        <th>AppleTV+</th>
-        <th>Disney+</th>
-        <th>Google Play</th>
-        <th>Netflix</th>
-        <th>YouTube</th>
+        <th><FilterHeading @state={{this.prime}} @route="streaming" @queryParam="prime" @label="Amazon Prime" /></th>
+        <th><FilterHeading @state={{this.apple}} @route="streaming" @queryParam="apple" @label="AppleTV+" /></th>
+        <th><FilterHeading @state={{this.disney}} @route="streaming" @queryParam="disney" @label="Disney+" /></th>
+        <th><FilterHeading @state={{this.googlePlay}} @route="streaming" @queryParam="google" @label="Google Play" /></th>
+        <th><FilterHeading @state={{this.netflix}} @route="streaming" @queryParam="netflix" @label="Netflix" /></th>
+        <th><FilterHeading @state={{this.youtube}} @route="streaming" @queryParam="youtube" @label="YouTube" /></th>
       </tr>
     </thead>
 
@@ -35,12 +35,12 @@
           <td class="field-rating">{{video.rating}}</td>
           <td class="field-topic">{{video.topic}}</td>
           <td class="field-summary">{{video.summary}}</td>
-          <td class="field-prime">{{#if video.prime}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td class="field-apple">{{#if video.apple}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td class="field-disney">{{#if video.disney}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td class="field-googlePlay">{{#if video.googlePlay}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td class="field-netflix">{{#if video.netflix}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td class="field-youtube">{{#if video.youtube}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-prime has-text-centered">{{#if video.prime}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-apple has-text-centered">{{#if video.apple}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-disney has-text-centered">{{#if video.disney}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-googlePlay has-text-centered">{{#if video.googlePlay}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-netflix has-text-centered">{{#if video.netflix}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="field-youtube has-text-centered">{{#if video.youtube}}{{fa-icon 'check-square'}}{{/if}}</td>
         </tr>
       {{/each}}
     </tbody>

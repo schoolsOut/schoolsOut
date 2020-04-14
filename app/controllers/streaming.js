@@ -6,18 +6,40 @@ import { action } from '@ember/object';
 export default class StreamingController extends Controller {
   @service data;
 
-  queryParams = ['search', 'page'];
+  queryParams = [
+    'search',
+    'page',
+    'prime',
+    'apple',
+    'disney',
+    { googlePlay: 'google' },
+    'netflix',
+    'youtube'
+  ];
   @tracked search = "";
   @tracked page = 1;
+
+  @tracked prime = false;
+  @tracked apple = false;
+  @tracked disney = false;
+  @tracked googlePlay = false;
+  @tracked netflix = false;
+  @tracked youtube = false;
 
   perPage=10;
 
   get filteredVideos() {
     const searchRegExp = new RegExp(this.search, "i");
-    return this.data.videos.filter((video) => {
+    return this.data.videos.filter( video => {
       const matchesSearch = searchRegExp.exec(video.title);
 
-      return matchesSearch;
+      let keep = matchesSearch;
+      ['prime', 'apple', 'disney', 'googlePlay', 'netflix', 'youtube'].forEach( key => {
+        if (this[key]) {
+          keep = keep && video[key];
+        }
+      })
+      return keep;
     }).sortBy('title');
   }
 

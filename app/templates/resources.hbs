@@ -22,12 +22,12 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Has App?</th>
-        <th>Early Childhood</th>
-        <th>Elementary</th>
-        <th>Middle School</th>
-        <th>High School</th>
-        <th>Higher Ed</th>
+        <th><FilterHeading @state={{this.hasApp}} @route="resources" @queryParam="app" @label="Has App?" /></th>
+        <th><FilterHeading @state={{this.earlyChildhood}} @route="resources" @queryParam="early" @label="Early Childhood" /></th>
+        <th><FilterHeading @state={{this.elementary}} @route="resources" @queryParam="elementary" @label="Elementary" /></th>
+        <th><FilterHeading @state={{this.middleSchool}} @route="resources" @queryParam="middle" @label="Middle School" /></th>
+        <th><FilterHeading @state={{this.highSchool}} @route="resources" @queryParam="high" @label="High School" /></th>
+        <th><FilterHeading @state={{this.higherEd}} @route="resources" @queryParam="higher" @label="Higher Ed" /></th>
       </tr>
     </thead>
 
@@ -40,12 +40,12 @@
             </a>
           </td>
           <td>{{resource.description}}</td>
-          <td>{{#if resource.hasApp}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if resource.earlyChildhood}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if resource.elementary}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if resource.middleSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if resource.highSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
-          <td>{{#if resource.higherEd}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.hasApp}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.earlyChildhood}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.elementary}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.middleSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.highSchool}}{{fa-icon 'check-square'}}{{/if}}</td>
+          <td class="has-text-centered">{{#if resource.higherEd}}{{fa-icon 'check-square'}}{{/if}}</td>
         </tr>
       {{/each}}
     </tbody>
