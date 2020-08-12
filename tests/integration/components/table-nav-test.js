@@ -10,17 +10,11 @@ module('Integration | Component | table-nav', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<TableNav />`);
+    this.prev = () => {};
+    this.next = () => {};
 
-    assert.equal(this.element.textContent.trim(), '');
+    await render(hbs`<TableNav @nextPage={{this.next}} @prevPage={{this.prev}} />`);
 
-    // Template block usage:
-    await render(hbs`
-      <TableNav>
-        template block text
-      </TableNav>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.dom().includesText('Pages:');
   });
 });

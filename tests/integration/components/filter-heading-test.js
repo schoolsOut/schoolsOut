@@ -13,14 +13,5 @@ module('Integration | Component | filter-heading', function(hooks) {
     await render(hbs`<FilterHeading />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <FilterHeading>
-        template block text
-      </FilterHeading>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });
